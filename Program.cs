@@ -15,22 +15,37 @@ namespace TrueOrFalse
             string[] questions = {
                 "Is blue the same colour as red?",
                 "Is your name Mary Poppins?",
-                "Does a rainbow have 9 colours?"
+                "Does a rainbow have 9 colours?",
                 "Does 2 + 3 = 5?"
-            }
+            };
 
             bool[] answers = {
                 false,
                 false,
                 false,
                 true
-            }
+            };
 
             bool[] responses = new bool[questions.Length];
 
             if (questions.Length != answers.Length) {
                 Console.WriteLine("Warning: The number of answers is not the same as the number of questions!");
             }
+
+            int askingIndex = 0;
+            foreach (string question in questions) {
+                string input;
+                bool isBool;
+                bool inputBool;
+
+                Console.WriteLine(questions[askingIndex]);
+                Console.WriteLine("True or False?");
+                input = Console.ReadLine();
+
+                isBool = Boolean.TryParse(input, out inputBool);
+                askingIndex ++;
+            }
         }
     }
 }
+

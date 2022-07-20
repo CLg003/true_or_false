@@ -13,6 +13,7 @@ namespace TrueOrFalse
             Tools.SetUpInputStream(entry);
 
             // Type your code below
+            // QUESTIONS
             string[] questions = {
                 "Is blue the same colour as red?",
                 "Is your name Mary Poppins?",
@@ -20,6 +21,7 @@ namespace TrueOrFalse
                 "Does 2 + 3 = 5?"
             };
 
+            // ANSWERS
             bool[] answers = {
                 false,
                 false,
@@ -33,6 +35,7 @@ namespace TrueOrFalse
                 Console.WriteLine("Warning: The number of answers is not the same as the number of questions!");
             }
 
+            // ASKING QUESTIONS
             int askingIndex = 0;
             foreach (string question in questions) {
                 string input;
@@ -44,7 +47,7 @@ namespace TrueOrFalse
                 input = Console.ReadLine();
 
                 isBool = Boolean.TryParse(input, out inputBool);
-
+                // VALIDATING INPUT
                 while (!isBool) {
                     Console.WriteLine("Please respond with 'True' or 'False'.");
                     input = Console.ReadLine();
@@ -55,9 +58,25 @@ namespace TrueOrFalse
             }
 
             // Checking responses accurately recorded
-            foreach (bool response in responses) {
-                Console.WriteLine(response);
+            // foreach (bool response in responses) {
+            //     Console.WriteLine(response);
+            // }
+
+            // SCORING
+            int scoringIndex = 0;
+            int score = 0;
+            foreach(bool answer in answers) {
+                bool userResponse = responses[scoringIndex];
+                Console.WriteLine($"{scoringIndex + 1}. Input: {userResponse} | Answer: {answer}");
+                
+                if (userResponse == answer) {
+                    score ++;
+                }
+                scoringIndex ++;
             }
+
+            Console.WriteLine($"You got {score} out of {answers.Length} correct!");
+        
 
         } // Main
     } // Program

@@ -9,6 +9,7 @@ namespace TrueOrFalse
             // Do not edit these lines
             Console.WriteLine("Welcome to 'True or False?'\nPress Enter to begin:");
             string entry = Console.ReadLine();
+            // Uses additional Tools functionality set up by Codecademy (unseen)
             Tools.SetUpInputStream(entry);
 
             // Type your code below
@@ -43,9 +44,22 @@ namespace TrueOrFalse
                 input = Console.ReadLine();
 
                 isBool = Boolean.TryParse(input, out inputBool);
+
+                while (!isBool) {
+                    Console.WriteLine("Please respond with 'True' or 'False'.");
+                    input = Console.ReadLine();
+                    isBool = Boolean.TryParse(input, out inputBool);
+                }
+                responses[askingIndex] = inputBool;
                 askingIndex ++;
             }
-        }
-    }
-}
+
+            // Checking responses accurately recorded
+            foreach (bool response in responses) {
+                Console.WriteLine(response);
+            }
+
+        } // Main
+    } // Program
+} // TrueOrFalse
 
